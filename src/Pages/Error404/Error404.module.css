@@ -1,0 +1,32 @@
+.contenidoError {
+  display: flex;
+  flex-direction: column; /* Cambia automáticamente a columna en pantallas pequeñas */
+  align-items: center;
+  justify-content: center; /* Centra el contenido vertical y horizontalmente */
+  text-align: center; /* Alinea el texto */
+  padding: 20px;
+  min-height: 100vh; /* Asegura que ocupe toda la pantalla */
+  background-color: #f8f9fa; /* Agrega un fondo ligero */
+}
+
+.imagen {
+  padding: 20px;
+  max-width: 100%; /* Asegura que la imagen no desborde */
+}
+
+.imagen img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px; /* Bordes más sutiles */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+}
+
+@media (min-width: 768px) {
+  .contenidoError {
+    flex-direction: row; /* Cambia a fila en pantallas grandes */
+  }
+
+  .imagen {
+    width: 50%; /* Imagen ocupa la mitad en pantallas grandes */
+  }
+}

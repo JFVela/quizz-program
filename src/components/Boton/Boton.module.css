@@ -1,0 +1,23 @@
+.boton {
+  background-color: var(--color1);
+  color: var(--color4);
+  font-family: var(--tipografia);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 12px 32px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  max-width: 250px;
+}
+
+.boton:hover {
+  background-color: var(--color2);
+  transform: scale(1.05);
+}
+
+.boton:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}

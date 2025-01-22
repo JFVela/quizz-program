@@ -1,0 +1,6 @@
+.palabra {
+  font-family: var(--tipografia);
+  margin: 0;
+  font-weight: 900;
+  font-size: 32px;
+}

@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+:root {
+  --tw-bg-opacity: 1;
+  --color1: rgb(79 70 229 / var(--tw-bg-opacity, 1));
+  --color2: #f99417;
+  --color3: #e8e2e2;
+  --color4: #f5f5f5;
+  --tipografia: "Geist", serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--tipografia);
+}

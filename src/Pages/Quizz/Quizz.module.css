@@ -1,0 +1,106 @@
+:root {
+  --card-bg: #2a2a2a;
+  --card-border: #3a3a3a;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #4a90e2;
+  --transition-speed: 0.3s;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px var(--card-shadow);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  padding: 24px;
+  position: relative;
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff3366, #4a90e2);
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease-in-out;
+  border-radius: 14px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 12px var(--card-shadow);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.heading {
+  color: var(--accent-color);
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.card p:not(.heading) {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Estilos base para todos los botones */
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+/* Botón "Repetir" */
+.btn-repeat {
+  background-color: #d84040;
+}
+
+.btn-repeat:hover {
+  background-color: #eeeeee;
+  color: black;
+}
+
+/* Botón "Siguiente" */
+.btn-siguiente {
+  background-color: #118B50;
+}
+
+.btn-siguiente:hover {
+  background-color: #16c47f;
+}
+
+/* Botón "Regresar" */
+.btn-regresar {
+  width: 100%;
+  gap: 8px;
+  background-color: var(--color1);
+}
+
+.btn-regresar:hover {
+  background-color: #f99417;
+}
