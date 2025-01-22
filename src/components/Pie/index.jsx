@@ -92,6 +92,7 @@ const SocialLinks = styled(Box)`
   display: flex;
   align-items: center;
   margin-top: 1rem;
+  justify-content: center;
 `;
 
 const StyledIconButton = styled(IconButton)`
@@ -113,11 +114,11 @@ const Footer = () => {
               <Avatar
                 alt="Juan Fv"
                 src="https://avatars.githubusercontent.com/u/129704208"
-                sx={{ width: 100, height: 100 }}
+                sx={{ width: 60, height: 60 }}
               />
             </AvatarWrapper>
             <Typography
-              variant="h4"
+              variant="h5"
               component="h2"
               fontWeight="bold"
               gutterBottom

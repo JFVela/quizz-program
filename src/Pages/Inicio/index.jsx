@@ -42,7 +42,6 @@ function Inicio() {
       </Contenedor>
       <Container
         sx={{
-          bgcolor: "var(--color3)",
           padding: "20px 10px",
           marginBottom: "50px",
         }}
