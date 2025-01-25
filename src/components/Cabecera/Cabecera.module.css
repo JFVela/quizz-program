@@ -19,3 +19,9 @@
     font-size: 16px;
     font-weight: 200;
 }
+
+.menu{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}

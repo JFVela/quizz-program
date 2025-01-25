@@ -1,0 +1,22 @@
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; 
+  width: 100%;
+}
+
+.linea {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #979797; 
+  max-width: 40%;
+}
+
+.texto {
+  font-size: 24px;
+  color: #000;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0;
+}

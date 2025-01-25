@@ -8,9 +8,14 @@ const Cabecera = () => {
       <h1 className={styles.logo}>
         <Enlaces url={"./"}>CodeQuiz</Enlaces>
       </h1>
-      <p className={styles.hogar}>
-        <Enlaces url={"./"}>Home</Enlaces>
-      </p>
+      <div className={styles.menu}>
+        <p className={styles.hogar}>
+          <Enlaces url={"./"}>Home</Enlaces>
+        </p>
+        <p className={styles.hogar}>
+          <Enlaces url={"./login"}>Login</Enlaces>
+        </p>
+      </div>
     </header>
   );
 };
