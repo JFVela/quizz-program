@@ -4,7 +4,7 @@ import { Https, Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 
 // Componente para el campo de contraseña con funcionalidad de mostrar/ocultar
-const PasswordInput = () => {
+const PasswordInput = ({ label }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -12,7 +12,7 @@ const PasswordInput = () => {
   return (
     <InputGroup
       icon={Https}
-      label="Contraseña"
+      label={label}
       type={showPassword ? "text" : "password"}
       InputProps={{
         endAdornment: (

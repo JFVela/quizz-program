@@ -5,6 +5,8 @@ import Contenedor from "../../components/Contenedor";
 import Subtitulo from "../../components/Subtitulo";
 import Carta from "../../components/Carta";
 import Enlaces from "../../components/Enlaces";
+import ProgramasImagen from "/src/db.json";
+
 
 import { Container } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -15,7 +17,7 @@ function Inicio() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/db.json");
+        const response = await fetch("/src/db.json");
         const data = await response.json();
         // console.log("Datos obtenidos:", data);
         if (Array.isArray(data.programas)) {
