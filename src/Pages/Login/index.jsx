@@ -1,21 +1,13 @@
-import {
-  Box,
-  FormControl,
-  IconButton,
-  TextField,
-  InputAdornment,
-  Button,
-} from "@mui/material";
+import { FormControl } from "@mui/material";
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
 import Titulo from "../../components/Titulo";
 import Subtitulo from "../../components/Subtitulo";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import Https from "@mui/icons-material/Https";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useState } from "react";
 import Boton from "../../components/Boton";
 import Linea from "../../components/Linea";
+import Input from "../../components/Input";
+import InputPassword from "../../components/InputPassword";
+import ButtonSocial from "../../components/ButtonSocial";
 
 const Contenido = styled.div`
   display: flex;
@@ -54,68 +46,7 @@ const ContenerGrupos = styled.div`
   text-align: center;
 `;
 
-// Componente reutilizable para campos de entrada
-const InputGroup = ({ icon: Icon, label, type = "text", ...props }) => (
-  <Box
-    sx={{
-      display: "flex",
-      alignItems: "flex-end",
-      width: "90%",
-      backgroundColor: "#F0EDFF",
-      borderRadius: "15px",
-      padding: "14px 18px",
-    }}
-  >
-    <Icon sx={{ color: "black", mr: 1, my: 0.5 }} />
-    <TextField
-      id={label.toLowerCase()}
-      label={label}
-      variant="standard"
-      type={type}
-      fullWidth
-      {...props}
-    />
-  </Box>
-);
-
-// Componente para el campo de contraseña con funcionalidad de mostrar/ocultar
-const PasswordInput = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  return (
-    <InputGroup
-      icon={Https}
-      label="Password"
-      type={showPassword ? "text" : "password"}
-      InputProps={{
-        endAdornment: (
-          <InputAdornment position="end">
-            <IconButton onClick={handleClickShowPassword} edge="end">
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
-          </InputAdornment>
-        ),
-      }}
-    />
-  );
-};
-
-// Componente para botones de redes sociales
-const SocialLoginButton = ({ imgSrc, text, alt }) => (
-  <Button
-    sx={{ padding: "10px", gap: "10px", borderRadius: "20px" }}
-    variant="outlined"
-    color="info"
-  >
-    <img src={imgSrc} alt={alt} /> {text}
-  </Button>
-);
-
 function Login() {
-  const codigo = uuidv4();
-
   return (
     <>
       <Contenido>
@@ -128,9 +59,8 @@ function Login() {
             style={{ display: "flex", gap: "20px", alignItems: "center" }}
             fullWidth
           >
-            <input type="hidden" value={codigo} />
-            <InputGroup icon={AccountCircle} label="Username" />
-            <PasswordInput />
+            <Input icon={AccountCircle} label="Usuario" />
+            <InputPassword />
             <Boton>Iniciar sesión ahora!</Boton>
           </FormControl>
           <Subtitulo>¿No tienes una cuenta?</Subtitulo>
@@ -138,12 +68,12 @@ function Login() {
             <strong>Iniciar sesión</strong> con otros
           </Linea>
           <ContenerGrupos>
-            <SocialLoginButton
+            <ButtonSocial
               imgSrc="/img/google.png"
               text="Entrar con Google"
               alt="Google"
             />
-            <SocialLoginButton
+            <ButtonSocial
               imgSrc="/img/face.png"
               text="Entrar con Facebook"
               alt="Facebook"
