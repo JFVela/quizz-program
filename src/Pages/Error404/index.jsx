@@ -9,7 +9,7 @@ function Error() {
     <main className={styles.contenidoError}>
       <section className={styles.imagen}>
         <img
-          src="/public/img/error404.png"
+          src="/img/error404.png"
           alt="Imagen de página no encontrada"
         />
       </section>

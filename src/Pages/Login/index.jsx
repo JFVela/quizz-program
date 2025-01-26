@@ -23,7 +23,7 @@ const Contenido = styled.div`
 
 const Logeo = styled.div`
   width: 400px;
-  min-height: 80vh;
+  min-height: 90vh;
   margin: 0 auto;
   padding: 0px;
   display: flex;
@@ -103,13 +103,13 @@ const PasswordInput = () => {
 };
 
 // Componente para botones de redes sociales
-const SocialLoginButton = ({ imgSrc, text }) => (
+const SocialLoginButton = ({ imgSrc, text, alt }) => (
   <Button
     sx={{ padding: "10px", gap: "10px", borderRadius: "20px" }}
     variant="outlined"
     color="info"
   >
-    <img src={imgSrc} alt={text} /> {text}
+    <img src={imgSrc} alt={alt} /> {text}
   </Button>
 );
 
@@ -121,10 +121,9 @@ function Login() {
       <Contenido>
         <Logeo>
           <ContenerGrupos>
-            <Titulo>LOGIN</Titulo>
+            <Titulo>Iniciar Sesión</Titulo>
             <Subtitulo>¿Estas Listo para comenzar?</Subtitulo>
           </ContenerGrupos>
-
           <FormControl
             style={{ display: "flex", gap: "20px", alignItems: "center" }}
             fullWidth
@@ -132,26 +131,27 @@ function Login() {
             <input type="hidden" value={codigo} />
             <InputGroup icon={AccountCircle} label="Username" />
             <PasswordInput />
-            <Boton>Login now</Boton>
+            <Boton>Iniciar sesión ahora!</Boton>
           </FormControl>
-
+          <Subtitulo>¿No tienes una cuenta?</Subtitulo>
           <Linea>
-            <strong>Login</strong> with Other
+            <strong>Iniciar sesión</strong> con otros
           </Linea>
-
           <ContenerGrupos>
             <SocialLoginButton
-              imgSrc="/public/img/google.png"
+              imgSrc="/img/google.png"
               text="Entrar con Google"
+              alt="Google"
             />
             <SocialLoginButton
-              imgSrc="/public/img/face.png"
+              imgSrc="/img/face.png"
               text="Entrar con Facebook"
+              alt="Facebook"
             />
           </ContenerGrupos>
         </Logeo>
         <ImagenPortada>
-          <img src="/public/img/Portada.png" alt="" />
+          <img src="/img/Portada.png" alt="Portada" />
         </ImagenPortada>
       </Contenido>
     </>
