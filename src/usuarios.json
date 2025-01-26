@@ -1,0 +1,64 @@
+{
+    "Usuarios": [
+        {
+            "correo": "usuario1@example.com",
+            "nombreUsuario": "usuario1",
+            "contrasena": "password1",
+            "id": 1
+        },
+        {
+            "correo": "usuario2@example.com",
+            "nombreUsuario": "usuario2",
+            "contrasena": "password2",
+            "id": 2
+        },
+        {
+            "correo": "usuario3@example.com",
+            "nombreUsuario": "usuario3",
+            "contrasena": "password3",
+            "id": 3
+        },
+        {
+            "correo": "usuario4@example.com",
+            "nombreUsuario": "usuario4",
+            "contrasena": "password4",
+            "id": 4
+        },
+        {
+            "correo": "usuario5@example.com",
+            "nombreUsuario": "usuario5",
+            "contrasena": "password5",
+            "id": 5
+        },
+        {
+            "correo": "usuario6@example.com",
+            "nombreUsuario": "usuario6",
+            "contrasena": "password6",
+            "id": 6
+        },
+        {
+            "correo": "usuario7@example.com",
+            "nombreUsuario": "usuario7",
+            "contrasena": "password7",
+            "id": 7
+        },
+        {
+            "correo": "usuario8@example.com",
+            "nombreUsuario": "usuario8",
+            "contrasena": "password8",
+            "id": 8
+        },
+        {
+            "correo": "usuario9@example.com",
+            "nombreUsuario": "usuario9",
+            "contrasena": "password9",
+            "id": 9
+        },
+        {
+            "correo": "usuario10@example.com",
+            "nombreUsuario": "usuario10",
+            "contrasena": "password10",
+            "id": 10
+        }
+    ]
+}
