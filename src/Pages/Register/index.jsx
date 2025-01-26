@@ -3,12 +3,14 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import Titulo from "../../components/Titulo";
 import Subtitulo from "../../components/Subtitulo";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import EmailIcon from "@mui/icons-material/Email";
+import PersonIcon from "@mui/icons-material/Person";
 import Boton from "../../components/Boton";
 import Linea from "../../components/Linea";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
 import ButtonSocial from "../../components/ButtonSocial";
+import Enlaces from "../../components/Enlaces";
 
 const Contenido = styled.div`
   display: flex;
@@ -55,32 +57,37 @@ function Login() {
       <Contenido>
         <Logeo>
           <ContenerGrupos>
-            <Titulo>Iniciar Sesión</Titulo>
-            <Subtitulo>¿Estas Listo para comenzar?</Subtitulo>
+            <Titulo>Crear Cuenta</Titulo>
+            <Subtitulo>
+              Únete a la diversión y demuestra tus conocimientos
+            </Subtitulo>
           </ContenerGrupos>
           <FormControl
             style={{ display: "flex", gap: "20px", alignItems: "center" }}
             fullWidth
           >
             <input type="hidden" value={codigo} />
-            <Input icon={AccountCircle} label="Username" />
-            <InputPassword />
-            <Boton>Iniciar sesión ahora!</Boton>
+            <Input icon={EmailIcon} label="Correo electrónico" />
+            <Input icon={PersonIcon} label="Crear usuario" />
+            <InputPassword label="Crear una contraseña" />
+            <Boton>Crear ahora!</Boton>
           </FormControl>
-          <Subtitulo>¿No tienes una cuenta?</Subtitulo>
+          <Subtitulo>
+            ¿Ya tienes una cuenta?{" "}
+            <Enlaces url={"../login"} color="black">
+              <span style={{ textDecorationLine: "underline" }}>
+                Inicia sesión aquí
+              </span>
+            </Enlaces>
+          </Subtitulo>
           <Linea>
-            <strong>Iniciar sesión</strong> con otros
+            <strong>Crear cuenta</strong> con ...
           </Linea>
           <ContenerGrupos>
             <ButtonSocial
               imgSrc="/img/google.png"
               text="Entrar con Google"
               alt="Google"
-            />
-            <ButtonSocial
-              imgSrc="/img/face.png"
-              text="Entrar con Facebook"
-              alt="Facebook"
             />
           </ContenerGrupos>
         </Logeo>

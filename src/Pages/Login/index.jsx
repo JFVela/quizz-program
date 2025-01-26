@@ -8,6 +8,7 @@ import Linea from "../../components/Linea";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
 import ButtonSocial from "../../components/ButtonSocial";
+import Enlaces from "../../components/Enlaces";
 
 const Contenido = styled.div`
   display: flex;
@@ -60,10 +61,18 @@ function Login() {
             fullWidth
           >
             <Input icon={AccountCircle} label="Usuario" />
-            <InputPassword />
+            <InputPassword label="Ingrese su contraseña" />
             <Boton>Iniciar sesión ahora!</Boton>
           </FormControl>
-          <Subtitulo>¿No tienes una cuenta?</Subtitulo>
+          <Subtitulo>
+            ¿No tienes una cuenta?{" "}
+            <Enlaces url={"../register"} color="black">
+              <span style={{ textDecorationLine: "underline" }}>
+                Crear cuenta
+              </span>
+            </Enlaces>
+          </Subtitulo>
+
           <Linea>
             <strong>Iniciar sesión</strong> con otros
           </Linea>
