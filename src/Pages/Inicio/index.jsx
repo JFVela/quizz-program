@@ -18,14 +18,24 @@ function Inicio() {
         const response = await fetch(
           "https://my-json-server.typicode.com/JFVela/api-quizz-program/programas"
         );
+
+        // Verifica si la respuesta es exitosa
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
         const data = await response.json();
+
         if (Array.isArray(data)) {
           setProgramas(data);
+        } else {
+          console.error("El formato de los datos no es el esperado:", data);
         }
       } catch (error) {
         console.error("Error al cargar los datos:", error);
       }
     };
+
     fetchData();
   }, []);
 
