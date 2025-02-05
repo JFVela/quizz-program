@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
   FormControl,
@@ -10,20 +10,19 @@ import {
 import Contenedor from "../../components/Contenedor";
 import Stopwatch from "../../components/Cronometro/Stopwatch";
 import Enlaces from "../../components/Enlaces";
-import PreguntaDB from "/src/db.json";
-
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import ReplayIcon from "@mui/icons-material/Replay";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-
 import styles from "./Quizz.module.css";
 
 const Quizz = () => {
   const { titulo } = useParams(); // Obtener el parámetro de la URL
-  const preguntasFiltradas = PreguntaDB.quizz.filter(
-    (pregunta) => pregunta.programa.toLowerCase() === titulo.toLowerCase()
-  );
 
+  // Estado para almacenar los datos del JSON remoto
+  const [db, setDb] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  // Estados para el cuestionario
   const [key, setKey] = useState(0);
   const [indice, setIndice] = useState(0);
   const [puntos, setPuntos] = useState(0);
@@ -31,6 +30,37 @@ const Quizz = () => {
   const [terminado, setTerminado] = useState(false);
   const [tiempoTotal, setTiempoTotal] = useState(0);
   const [running, setRunning] = useState(true);
+
+  // Fetch de la base de datos desde la API
+  useEffect(() => {
+    const fetchDb = async () => {
+      try {
+        const response = await fetch(
+          "https://my-json-server.typicode.com/JFVela/api-quizz-program/db"
+        );
+        const jsonData = await response.json();
+        setDb(jsonData);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+        setLoading(false);
+      }
+    };
+    fetchDb();
+  }, []);
+
+  // Mientras se carga, mostrar un mensaje de espera
+  if (loading) {
+    return <div>Cargando cuestionario...</div>;
+  }
+
+  // Filtrar las preguntas según el programa (titulo) de la URL
+  const preguntasFiltradas =
+    db && db.quizz
+      ? db.quizz.filter(
+          (pregunta) => pregunta.programa.toLowerCase() === titulo.toLowerCase()
+        )
+      : [];
 
   // Manejar respuesta seleccionada y puntaje
   const manejarRespuesta = () => {
@@ -89,7 +119,6 @@ const Quizz = () => {
                   ))}
                 </RadioGroup>
               </FormControl>
-
               <button
                 className={`${styles.btn} ${styles["btn-siguiente"]}`}
                 onClick={manejarRespuesta}
