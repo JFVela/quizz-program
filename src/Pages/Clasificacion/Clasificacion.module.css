@@ -1,0 +1,23 @@
+.destacado {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18rem;
+}
+
+@media (max-width: 1200px) {
+  .info {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .destacado {
+    gap: 1rem;
+  }
+}

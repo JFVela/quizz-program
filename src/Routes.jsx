@@ -5,6 +5,7 @@ import Quizz from "./Pages/Quizz";
 import Error404 from "./Pages/Error404";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Clasificacion from "./Pages/Clasificacion";
 
 function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ function AppRoutes() {
           <Route path="quizz/:titulo" element={<Quizz />} />  
           <Route path="/login" element={<Login />} /> 
           <Route path="/register" element={<Register />} /> 
+          <Route path="/clasificacion" element={<Clasificacion />} /> 
           <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
