@@ -5,8 +5,6 @@ import Contenedor from "../../components/Contenedor";
 import Subtitulo from "../../components/Subtitulo";
 import Carta from "../../components/Carta";
 import Enlaces from "../../components/Enlaces";
-import ProgramasImagen from "/src/db.json";
-
 
 import { Container } from "@mui/material";
 import { useEffect, useState } from "react";

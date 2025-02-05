@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import styles from "./Clasificacion.module.css";
-import Titulo from "../../Components/Titulo";
 import UsuariosJson from "../../Usuarios.json";
+import Titulo from "../../components/Titulo";
 
 const CiruloNumero = styled.div`
   background-color: #fff2af;
