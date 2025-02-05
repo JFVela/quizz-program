@@ -1,7 +1,7 @@
 import { FormControl } from "@mui/material";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import Titulo from "../../components/Titulo";
+import Titulos from "../../components/Titulo";
 import Subtitulo from "../../components/Subtitulo";
 import EmailIcon from "@mui/icons-material/Email";
 import PersonIcon from "@mui/icons-material/Person";
@@ -57,7 +57,7 @@ function Login() {
       <Contenido>
         <Logeo>
           <ContenerGrupos>
-            <Titulo>Crear Cuenta</Titulo>
+            <Titulos>Crear Cuenta</Titulos>
             <Subtitulo>
               Únete a la diversión y demuestra tus conocimientos
             </Subtitulo>
