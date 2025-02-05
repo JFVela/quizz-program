@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import styles from "./Clasificacion.module.css";
-import UsuariosJson from "../../Usuarios.json";
 import Titulo from "../../components/Titulo";
 
 const CiruloNumero = styled.div`
@@ -72,10 +71,12 @@ const Usuario = styled.h2`
 const Clasificacion = () => {
   const [paises, setPaises] = useState([]);
   const [banderas, setBanderas] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
   const [cargando, setCargando] = useState(true);
 
+  // Fetch de la API de países (para las banderas)
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchCountries = async () => {
       try {
         const response = await fetch("https://restcountries.com/v3.1/all");
         const data = await response.json();
@@ -83,22 +84,40 @@ const Clasificacion = () => {
         const nombrePais = data.map((pais) => pais.name.common);
         setPaises(nombrePais);
         setBanderas(banderaPais);
+      } catch (error) {
+        console.error("Error fetching countries: ", error);
+      }
+    };
+    fetchCountries();
+  }, []);
 
-        // Retrasa la carga por 3 segundos para asegurar que todos los datos estén listos
+  // Fetch de los usuarios desde el JSON en la nube
+  useEffect(() => {
+    const fetchUsuarios = async () => {
+      try {
+        const response = await fetch(
+          "https://my-json-server.typicode.com/JFVela/api-quizz-usuarios/db"
+        );
+        const data = await response.json();
+        // data es un objeto con la propiedad "Usuarios"
+        if (Array.isArray(data.Usuarios)) {
+          setUsuarios(data.Usuarios);
+        }
+        // Retrasa la carga 3 segundos para asegurar que todo esté listo
         setTimeout(() => setCargando(false), 3000);
       } catch (error) {
         console.error("Error fetching data: ", error);
-        setCargando(false); // Asegura que el estado cambie aunque haya error
+        setCargando(false);
       }
     };
 
-    fetchData();
+    fetchUsuarios();
   }, []);
 
   return (
     <Contenedor>
       <Titulo>Tabla de Clasificación</Titulo>
-      {/* Mi puntuacion personal */}
+      {/* Mi puntuación personal */}
       <Reglon>
         <div className={styles.destacado}>
           <CiruloNumero>
@@ -121,7 +140,7 @@ const Clasificacion = () => {
       {cargando ? (
         <h3>Cargando clasificación...</h3>
       ) : (
-        UsuariosJson.Usuarios.map((usuario, index) => (
+        usuarios.map((usuario, index) => (
           <Reglon key={usuario.id}>
             <div className={styles.destacado}>
               <CiruloNumero>

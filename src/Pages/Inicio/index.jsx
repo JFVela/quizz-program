@@ -19,7 +19,6 @@ function Inicio() {
           "https://my-json-server.typicode.com/JFVela/api-quizz-program/programas"
         );
 
-        // Verifica si la respuesta es exitosa
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
