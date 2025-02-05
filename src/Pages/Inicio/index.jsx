@@ -15,11 +15,12 @@ function Inicio() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/src/db.json");
+        const response = await fetch(
+          "https://my-json-server.typicode.com/JFVela/api-quizz-program/programas"
+        );
         const data = await response.json();
-        // console.log("Datos obtenidos:", data);
-        if (Array.isArray(data.programas)) {
-          setProgramas(data.programas); // Accede a 'programas'
+        if (Array.isArray(data)) {
+          setProgramas(data);
         }
       } catch (error) {
         console.error("Error al cargar los datos:", error);
