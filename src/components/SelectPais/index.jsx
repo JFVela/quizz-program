@@ -1,34 +1,59 @@
-import * as React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import * as React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import styles from "./SelectPais.module.css";
 
-export default function SelectVariants() {
-  const [age, setAge] = React.useState('');
+const SelectVariants = ({ icon: Icon }) => {
+  const [selectedCountry, setSelectedCountry] = React.useState("");
+  const [countries, setCountries] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://restcountries.com/v3.1/all")
+      .then((response) => response.json())
+      .then((data) => {
+        const countryData = data
+          .map((country) => ({
+            name: country.name.common,
+            flag: country.flags.png,
+          }))
+          .sort((a, b) => a.name.localeCompare(b.name));
+        setCountries(countryData);
+      })
+      .catch((error) => console.error("Error fetching countries:", error));
+  }, []);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSelectedCountry(event.target.value);
   };
 
   return (
-    <div>
-      <FormControl variant="filled">
-        <InputLabel id="demo-simple-select-filled-label">Seleccione su pais:</InputLabel>
+    <div className={styles.container}>
+      {Icon && <Icon sx={{ color: "black", mr: 1, my: 0.5 }} />}
+      <FormControl sx={{ width: "100%" }} variant="standard">
+        <InputLabel id="select-pais-label">Seleccione su país:</InputLabel>
         <Select
-          labelId="demo-simple-select-filled-label"
-          id="demo-simple-select-filled"
-          value={age}
+          sx={{ margin: "0px" }}
+          labelId="select-pais-label"
+          id="select-pais"
+          value={selectedCountry}
           onChange={handleChange}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {countries.map((country, index) => (
+            <MenuItem key={index} value={country.name}>
+              <img
+                src={country.flag}
+                alt={country.name}
+                className={styles.flag}
+              />
+              {country.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>
   );
-}
+};
+
+export default SelectVariants;

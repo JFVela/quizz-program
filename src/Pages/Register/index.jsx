@@ -5,12 +5,14 @@ import Titulo from "../../components/Titulo";
 import Subtitulo from "../../components/Subtitulo";
 import EmailIcon from "@mui/icons-material/Email";
 import PersonIcon from "@mui/icons-material/Person";
+import PublicIcon from '@mui/icons-material/Public';
 import Boton from "../../components/Boton";
 import Linea from "../../components/Linea";
 import Input from "../../components/Input";
 import InputPassword from "../../components/InputPassword";
 import ButtonSocial from "../../components/ButtonSocial";
 import Enlaces from "../../components/Enlaces";
+import SelectPais from "../../components/SelectPais";
 
 const Contenido = styled.div`
   display: flex;
@@ -70,6 +72,7 @@ function Login() {
             <Input icon={EmailIcon} label="Correo electrónico" />
             <Input icon={PersonIcon} label="Crear usuario" />
             <InputPassword label="Crear una contraseña" />
+            <SelectPais icon={PublicIcon}/> 
             <Boton>Crear ahora!</Boton>
           </FormControl>
           <Subtitulo>
