@@ -63,13 +63,14 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    // Crear objeto con los datos del formulario
-    const data = { email, username, password, pais };
+    // Generamos un token (UUID) y lo incluimos en los datos a enviar
+    const token = uuidv4();
+    const data = { email, username, password, pais, token };
     console.log("Datos enviados:", data);
 
     try {
-      // Llamamos a la ruta relativa (asegúrate de que el servidor esté configurado para servir PHP)
-      const response = await fetch("/backend/api/register.php", {
+      // Llamamos al endpoint de Express (ajusta la URL si es necesario)
+      const response = await fetch("http://localhost:8081/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -77,14 +78,13 @@ function Register() {
         body: JSON.stringify(data),
       });
 
-      // Usamos response.text() en lugar de response.json()
-      const result = await response.text();
+      const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result);
+        throw new Error(result.error);
       }
 
-      setMessage(result);
+      setMessage(result.success);
       // Opcional: redirigir al login, por ejemplo:
       // navigate("/login");
     } catch (error) {
@@ -107,7 +107,7 @@ function Register() {
               style={{ display: "flex", gap: "20px", alignItems: "center" }}
               fullWidth
             >
-              <input type="hidden" value={uuidv4()} />
+              {/* Ya no es necesario el input hidden ya que generamos el token en el handleRegister */}
               <Input
                 icon={EmailIcon}
                 label="Correo electrónico"
