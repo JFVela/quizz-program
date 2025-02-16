@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { FormControl } from "@mui/material";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
@@ -5,7 +6,7 @@ import Titulo from "../../components/Titulo";
 import Subtitulo from "../../components/Subtitulo";
 import EmailIcon from "@mui/icons-material/Email";
 import PersonIcon from "@mui/icons-material/Person";
-import PublicIcon from '@mui/icons-material/Public';
+import PublicIcon from "@mui/icons-material/Public";
 import Boton from "../../components/Boton";
 import Linea from "../../components/Linea";
 import Input from "../../components/Input";
@@ -13,6 +14,7 @@ import InputPassword from "../../components/InputPassword";
 import ButtonSocial from "../../components/ButtonSocial";
 import Enlaces from "../../components/Enlaces";
 import SelectPais from "../../components/SelectPais";
+import Styles from "./Register.module.css";
 
 const Contenido = styled.div`
   display: flex;
@@ -51,8 +53,44 @@ const ContenerGrupos = styled.div`
   text-align: center;
 `;
 
-function Login() {
-  const codigo = uuidv4();
+function Register() {
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [pais, setPais] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+
+    // Crear objeto con los datos del formulario
+    const data = { email, username, password, pais };
+    console.log("Datos enviados:", data);
+
+    try {
+      // Llamamos a la ruta relativa (asegúrate de que el servidor esté configurado para servir PHP)
+      const response = await fetch("/backend/api/register.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Usamos response.text() en lugar de response.json()
+      const result = await response.text();
+
+      if (!response.ok) {
+        throw new Error(result);
+      }
+
+      setMessage(result);
+      // Opcional: redirigir al login, por ejemplo:
+      // navigate("/login");
+    } catch (error) {
+      setMessage(error.message);
+    }
+  };
 
   return (
     <>
@@ -64,17 +102,35 @@ function Login() {
               Únete a la diversión y demuestra tus conocimientos
             </Subtitulo>
           </ContenerGrupos>
-          <FormControl
-            style={{ display: "flex", gap: "20px", alignItems: "center" }}
-            fullWidth
-          >
-            <input type="hidden" value={codigo} />
-            <Input icon={EmailIcon} label="Correo electrónico" />
-            <Input icon={PersonIcon} label="Crear usuario" />
-            <InputPassword label="Crear una contraseña" />
-            <SelectPais icon={PublicIcon}/> 
-            <Boton>Crear ahora!</Boton>
-          </FormControl>
+          <form onSubmit={handleRegister} className={Styles.formulario}>
+            <FormControl
+              style={{ display: "flex", gap: "20px", alignItems: "center" }}
+              fullWidth
+            >
+              <input type="hidden" value={uuidv4()} />
+              <Input
+                icon={EmailIcon}
+                label="Correo electrónico"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Input
+                icon={PersonIcon}
+                label="Crear usuario"
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <InputPassword
+                label="Crear una contraseña"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {/* Asegúrate de que el componente SelectPais invoque onChange con el país seleccionado */}
+              <SelectPais
+                icon={PublicIcon}
+                onChange={(selected) => setPais(selected)}
+              />
+              <Boton>Crear ahora!</Boton>
+            </FormControl>
+          </form>
+          {message && <p>{message}</p>}
           <Subtitulo>
             ¿Ya tienes una cuenta?{" "}
             <Enlaces url={"../login"} color="black">
@@ -102,4 +158,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

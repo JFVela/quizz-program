@@ -5,7 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import styles from "./SelectPais.module.css";
 
-const SelectVariants = ({ icon: Icon }) => {
+const SelectVariants = ({ icon: Icon, onChange }) => {
   const [selectedCountry, setSelectedCountry] = React.useState("");
   const [countries, setCountries] = React.useState([]);
 
@@ -26,6 +26,9 @@ const SelectVariants = ({ icon: Icon }) => {
 
   const handleChange = (event) => {
     setSelectedCountry(event.target.value);
+    if (onChange) {
+      onChange(event.target.value);  // Se invoca onChange con el país seleccionado
+    }
   };
 
   return (

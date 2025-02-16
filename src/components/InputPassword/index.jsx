@@ -1,10 +1,10 @@
+// src/components/InputPassword/index.jsx
 import { IconButton, InputAdornment } from "@mui/material";
 import InputGroup from "../Input";
 import { Https, Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 
-// Componente para el campo de contraseña con funcionalidad de mostrar/ocultar
-const PasswordInput = ({ label }) => {
+const PasswordInput = ({ label, onChange, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -14,6 +14,7 @@ const PasswordInput = ({ label }) => {
       icon={Https}
       label={label}
       type={showPassword ? "text" : "password"}
+      onChange={onChange}  // Se agrega el onChange aquí
       InputProps={{
         endAdornment: (
           <InputAdornment position="end">
@@ -23,6 +24,7 @@ const PasswordInput = ({ label }) => {
           </InputAdornment>
         ),
       }}
+      {...props}
     />
   );
 };
