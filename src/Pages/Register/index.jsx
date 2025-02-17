@@ -15,6 +15,7 @@ import ButtonSocial from "../../components/ButtonSocial";
 import Enlaces from "../../components/Enlaces";
 import SelectPais from "../../components/SelectPais";
 import Styles from "./Register.module.css";
+import MensajeSweet from "../../components/MensajeSweet";
 
 const Contenido = styled.div`
   display: flex;
@@ -66,10 +67,10 @@ function Register() {
     // Generamos un token (UUID) y lo incluimos en los datos a enviar
     const token = uuidv4();
     const data = { email, username, password, pais, token };
+
     console.log("Datos enviados:", data);
 
     try {
-      // Llamamos al endpoint de Express (ajusta la URL si es necesario)
       const response = await fetch("http://localhost:8081/register", {
         method: "POST",
         headers: {
@@ -84,11 +85,19 @@ function Register() {
         throw new Error(result.error);
       }
 
-      setMessage(result.success);
-      // Opcional: redirigir al login, por ejemplo:
+      MensajeSweet({
+        tit: "Registro exitoso. Revisa tu correo.",
+        tie: 4,
+      });
+
+      // Opcional: redirigir al login
       // navigate("/login");
     } catch (error) {
-      setMessage(error.message);
+      MensajeSweet({
+        ico: "2",
+        tit: error.message,
+        tie: 4,
+      });
     }
   };
 
