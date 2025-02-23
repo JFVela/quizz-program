@@ -113,6 +113,6 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.listen(8081, () => {
-  console.log("Listening on port 8081");
+app.listen(8081, "0.0.0.0", () => {
+  console.log("Servidor corriendo en el puerto 8081");
 });

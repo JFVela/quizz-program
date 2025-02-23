@@ -76,7 +76,7 @@ function Inicio() {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const res = await fetch("http://localhost:8081/usuarios");
+        const res = await fetch("http://192.168.1.31:8081/usuarios");
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
@@ -89,6 +89,7 @@ function Inicio() {
 
     fetchUsuarios();
   }, []);
+
 
   return (
     <>

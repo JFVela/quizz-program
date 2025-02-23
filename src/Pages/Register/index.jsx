@@ -71,7 +71,7 @@ function Register() {
     console.log("Datos enviados:", data);
 
     try {
-      const response = await fetch("http://localhost:8081/register", {
+      const response = await fetch("http://192.168.1.31:8081/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
