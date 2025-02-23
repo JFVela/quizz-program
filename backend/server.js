@@ -113,6 +113,39 @@ app.post('/register', (req, res) => {
   });
 });
 
+// Endpoint para login
+app.post('/login', (req, res) => {
+  const { usuario, password } = req.body;
+
+  // Validar que se reciban ambos campos
+  if (!usuario || !password) {
+    return res.status(400).json({ error: 'Faltan datos requeridos.' });
+  }
+
+  // Buscamos el usuario en la base de datos (asumimos que se identifica por username)
+  const sql = 'SELECT * FROM usuarios WHERE username = ?';
+  db.query(sql, [usuario], (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (results.length === 0) {
+      // Usuario no encontrado
+      return res.status(400).json({ error: 'Usuario no encontrado.' });
+    }
+
+    const user = results[0];
+
+    // Comparar la contraseña ingresada con el hash almacenado
+    bcrypt.compare(password, user.password_hash, (err, isMatch) => {
+      if (err) return res.status(500).json({ error: err.message });
+      if (!isMatch) {
+        return res.status(400).json({ error: 'Contraseña incorrecta.' });
+      }
+      
+      // Si la contraseña es correcta, se puede iniciar la sesión (por ejemplo, generar un token)
+      return res.status(200).json({ success: "Inicio de sesión exitoso.", user });
+    });
+  });
+});
+
 app.listen(8081, "0.0.0.0", () => {
   console.log("Servidor corriendo en el puerto 8081");
 });
