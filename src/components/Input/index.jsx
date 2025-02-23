@@ -1,7 +1,7 @@
 import { Box, TextField } from "@mui/material";
 
 // Componente reutilizable para campos de entrada
-const InputGroup = ({ icon: Icon, label, type = "text", ...props }) => (
+const InputGroup = ({ icon: Icon, label, placeholder, type = "text", ...props }) => (
   <Box
     sx={{
       display: "flex",
@@ -17,6 +17,7 @@ const InputGroup = ({ icon: Icon, label, type = "text", ...props }) => (
       id={label.toLowerCase()}
       label={label}
       variant="standard"
+      placeholder={placeholder}
       type={type}
       fullWidth
       {...props}

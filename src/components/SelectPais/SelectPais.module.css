@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     align-items: flex-end;
     width: 90%;
@@ -6,10 +6,10 @@
     border-radius: 15px;
     padding: 14px 18px;
 }
+
 .flag {
     width: 20px;
     height: 15px;
     margin-right: 8px;
     vertical-align: middle;
-  }
-  
+}

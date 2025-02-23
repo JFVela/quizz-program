@@ -120,15 +120,18 @@ function Register() {
               <Input
                 icon={EmailIcon}
                 label="Correo electrónico"
+                placeholder="Ingrese su correo electronico" 
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Input
                 icon={PersonIcon}
                 label="Crear usuario"
+                placeholder="Ingrese un usuario entre 8 y 15 carácteres"
                 onChange={(e) => setUsername(e.target.value)}
               />
               <InputPassword
                 label="Crear una contraseña"
+                placeholder="Entre 10 y 20 carácteres"
                 onChange={(e) => setPassword(e.target.value)}
               />
               {/* Asegúrate de que el componente SelectPais invoque onChange con el país seleccionado */}
