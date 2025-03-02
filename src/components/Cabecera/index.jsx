@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./Cabecera.module.css";
 import Enlaces from "../Enlaces";
-import { useAuthStorage } from "../../hooks/useAuthStorage";
+import Boton from "../Boton";
+import { AuthContext } from "../../hooks/useAuthStorage";
 
 const Cabecera = () => {
-
-  const { user, logout, isLoggedIn } = useAuthStorage();
-
+  const { isLoggedIn, user, logout } = useContext(AuthContext);
 
   return (
     <header className={styles.header}>
@@ -16,8 +15,8 @@ const Cabecera = () => {
       <div className={styles.menu}>
         {isLoggedIn ? (
           <>
-            <p className={styles.user}>Hola {user.usuario}</p>
-            <button className={styles.logout} onClick={logout}>Cerrar sesión</button>
+            <p className={styles.user}>{user.usuario}</p>
+            <Boton onClick={logout}>Logout</Boton>
           </>
         ) : (
           <>
