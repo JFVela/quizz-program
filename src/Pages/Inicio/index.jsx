@@ -76,7 +76,7 @@ function Inicio() {
   useEffect(() => {
     const fetchUsuarios = async () => {
       try {
-        const res = await fetch("http://192.168.1.31:8081/usuarios");
+        const res = await fetch("http://localhost:8081/usuarios");
         if (!res.ok) {
           throw new Error(`HTTP error! Status: ${res.status}`);
         }
@@ -89,7 +89,6 @@ function Inicio() {
 
     fetchUsuarios();
   }, []);
-
 
   return (
     <>
@@ -116,37 +115,6 @@ function Inicio() {
             />
           ))}
         </div>
-      </Container>
-
-      {/* Tabla para mostrar los usuarios */}
-      <Container sx={{ padding: "20px 10px", marginBottom: "50px" }}>
-        <Titulo>Usuarios Registrados</Titulo>
-        <table border="1" width="100%">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Correo</th>
-              <th>Usuario</th>
-              <th>País</th>
-              <th>Puntaje Total</th>
-              <th>Tiempo (segundos)</th>
-              <th>Verificado</th>
-            </tr>
-          </thead>
-          <tbody>
-            {usuarios.map((usuario) => (
-              <tr key={usuario.id}>
-                <td>{usuario.id}</td>
-                <td>{usuario.email}</td>
-                <td>{usuario.username}</td>
-                <td>{usuario.pais}</td>
-                <td>{usuario.puntaje_total}</td>
-                <td>{usuario.tiempo_segundos}</td>
-                <td>{usuario.verificado ? "Sí" : "No"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </Container>
     </>
   );
