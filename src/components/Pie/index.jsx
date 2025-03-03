@@ -33,6 +33,8 @@ const FooterWrapper = styled.footer`
   padding: 3rem 0;
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
   padding: 25px 0;
+  position: relative;
+  bottom: 0;
 `;
 
 const FooterContent = styled(Container)`

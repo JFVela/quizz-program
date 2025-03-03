@@ -9,54 +9,52 @@
 }
 
 .card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px var(--card-shadow);
-  color: var(--text-primary);
+  width: 80%;
+  background-color: white;
+  border: 1px solid var(--color1);
+  box-shadow: 0px 0px 20px 0px var(--color1);
+  border-radius: 15px;
+}
+
+.tituloPregunta {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  max-width: 400px;
-  padding: 24px;
-  position: relative;
-  transition: all var(--transition-speed) ease-in-out;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #ff3366, #4a90e2);
-  z-index: -1;
-  filter: blur(10px);
-  opacity: 0;
-  transition: opacity var(--transition-speed) ease-in-out;
-  border-radius: 14px;
-}
-
-.card:hover {
-  box-shadow: 0 8px 12px var(--card-shadow);
-}
-
-.card:hover::before {
-  opacity: 1;
+  color: var(--color1);
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  padding: 10px;
+  justify-content: center;
+  background-color: none;
 }
 
 .heading {
-  color: var(--accent-color);
+  color: white;
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 16px;
+  background-color: var(--color1);
+  margin: 0;
+  padding: 10px;
+  text-align: left;
 }
 
-.card p:not(.heading) {
-  color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.5;
+.tiempos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.radioGroup {
+  margin: 10px;
+}
+
+.grupoBotones {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 /* Estilos base para todos los botones */
@@ -71,9 +69,8 @@
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease-in-out;
+  width: 100%;
 }
-
-
 
 /* Botón "Repetir" */
 .btn-repeat {
@@ -87,7 +84,7 @@
 
 /* Botón "Siguiente" */
 .btn-siguiente {
-  background-color: #118B50;
+  background-color: #118b50;
 }
 
 .btn-siguiente:hover {
@@ -96,10 +93,9 @@
 
 /* Botón "Regresar" */
 .btn-regresar {
-  width: 100%;
-  gap: 8px;
   background-color: var(--color1);
 }
+
 
 .btn-regresar:hover {
   background-color: #f99417;
